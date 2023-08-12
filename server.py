@@ -29,7 +29,8 @@ def handle(client):
             msg = message = client.recv(1024)
             
             if msg.decode('ascii').startswith('exit'):
-                client.remove(client)
+                index = clients.index(client)
+                clients.remove(client)
                 client.close()
                 nickname = nicknames[index]
                 broadcast(f'{nickname} left the Chat!'.encode('ascii'))
@@ -42,7 +43,7 @@ def handle(client):
             if client in clients:
                 index = clients.index(client)
                 # Index is used to remove client from list after getting disconnected
-                client.remove(client)
+                clients.remove(client)
                 client.close()
                 nickname = nicknames[index]
                 broadcast(f'{nickname} left the Chat!'.encode('ascii'))

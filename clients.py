@@ -43,10 +43,11 @@ def write():
         if stop_thread:
             break
         # Getting Messages
-        message = f'{nickname}: {input("")}'
+        # message = f'{nickname}: {input("")}'
+        message = input("")
         client.send(message.encode('ascii'))
 
-
+enter_server()
 receive_thread = threading.Thread(target=receive)
 receive_thread.start()
 write_thread = threading.Thread(target=write)
